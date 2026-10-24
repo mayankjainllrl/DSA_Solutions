@@ -43,3 +43,36 @@ show(finger)
 finger.next = None
 show(head)
 show(finger)
+
+
+# Lab step 3
+def build(values):
+    head = None
+    for v in reversed(values):
+        head = ListNode(v, head)
+    return head
+
+nums = build([1, 2, 3, 4, 5, 6, 7])
+slow = nums
+fast = nums
+step = 0
+while fast and fast.next:
+    slow = slow.next
+    fast = fast.next.next
+    step += 1
+    print(f"step {step}: slow at {slow.val}, fast at {fast.val if fast else None}")
+
+#prediction: 
+# step 1: slow at 2, fast at 3
+# step 2: slow at 3, fast at 5
+# step 3: slow at 4, fast at 7
+# step 4: slow at 5, fast at None
+
+a = ListNode(7)
+b = ListNode(7)
+c = a
+
+print(a.val == b.val) # prediction True
+print(a is b) # prediction False
+print(a is c) # prediction True
+print(id(a), id(b), id(c))
