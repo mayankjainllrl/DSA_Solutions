@@ -1,3 +1,4 @@
+
 # Lab step 1
 class ListNode:
     def __init__(self, val, next=None):
@@ -76,3 +77,29 @@ print(a.val == b.val) # prediction True
 print(a is b) # prediction False
 print(a is c) # prediction True
 print(id(a), id(b), id(c))
+
+
+# Linked List Lab 4
+head = ListNode(1, ListNode(2, ListNode(3, ListNode(4))))
+print("Lab-4")
+show(head)
+finger = head
+show(finger)
+print(finger is head)
+finger.next = None
+show(head)
+show(finger)
+
+# --- Step 4: dummy node ---
+def build_list(values):
+    dummy = ListNode(0)      # throwaway box; its value is never used
+    tail = dummy             # finger that always points at the last box so far
+    for v in values:
+        tail.next = ListNode(v)   # attach a new box after the last one
+        tail = tail.next          # move the finger onto it
+    return dummy.next        # the real list starts after the dummy
+
+show(build_list([5, 6, 7])) #prediction 5 -> 6 -> 7 -> None
+show(build_list([])) #prediction None
+
+
